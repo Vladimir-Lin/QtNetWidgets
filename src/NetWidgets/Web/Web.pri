@@ -1,0 +1,9 @@
+SOURCES += $${PWD}/nBookmarkTree.cpp
+SOURCES += $${PWD}/nBookmarks.cpp
+SOURCES += $${PWD}/nWebPageCapturer.cpp
+SOURCES += $${PWD}/nHtmlAnalyizer.cpp
+SOURCES += $${PWD}/nWebDockBar.cpp
+SOURCES += $${PWD}/nWebEngineBrowser.cpp
+SOURCES += $${PWD}/AndroidWebBrowser.cpp
+SOURCES += $${PWD}/AppleWebBrowser.cpp
+SOURCES += $${PWD}/DisguiseWebBrowser.cpp

@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>nFtpControl</class>
+ <widget class="QSplitter" name="nFtpControl">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>280</width>
+    <height>280</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Ftp Server Controller</string>
+  </property>
+  <property name="toolTip">
+   <string>Ftp Server Controller</string>
+  </property>
+  <property name="statusTip">
+   <string>Ftp Server Controller</string>
+  </property>
+  <property name="whatsThis">
+   <string>Ftp Server Controller</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
+  <property name="orientation">
+   <enum>Qt::Horizontal</enum>
+  </property>
+  <widget class="QStackedWidget" name="Stacked">
+   <widget class="QWidget" name="Security">
+    <widget class="QLineEdit" name="Username">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>260</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>Username</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="Password">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>260</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string>Password</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="Hidden">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>100</y>
+       <width>260</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Show hidden files</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="Anonymous">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>128</y>
+       <width>260</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Anonymous</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="ReadOnly">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>156</y>
+       <width>260</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Read-only anonymous access</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Start">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>210</y>
+       <width>260</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Start</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>:/images/yes.png</normaloff>
+       <activeoff>:/images/yes.png</activeoff>:/images/yes.png</iconset>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Back">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>240</y>
+       <width>260</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Back</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>:/images/projectup.png</normaloff>:/images/projectup.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Port">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>260</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="prefix">
+      <string>Port : </string>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>65535</number>
+     </property>
+     <property name="value">
+      <number>2100</number>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="Startup">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>184</y>
+       <width>260</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Automatic startup</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Folders">
+    <widget class="QTableWidget" name="sharedFolders">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>260</width>
+       <height>190</height>
+      </rect>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Write access</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Path</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>260</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Shared folders:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bAdd">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>240</y>
+       <width>126</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>:/icons/list-add.png</normaloff>:/icons/list-add.png</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bRemove">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>240</y>
+       <width>126</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Remove</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>:/icons/list-remove.png</normaloff>:/icons/list-remove.png</iconset>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QTableWidget" name="Connections">
+    <property name="columnCount">
+     <number>3</number>
+    </property>
+    <column/>
+    <column/>
+    <column/>
+   </widget>
+   <widget class="QWidget" name="Stats">
+    <widget class="QGraphicsView" name="chart">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>170</y>
+       <width>260</width>
+       <height>100</height>
+      </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="interactive">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+     </property>
+     <property name="renderHints">
+      <set>QPainter::Antialiasing|QPainter::TextAntialiasing</set>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="stats">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>260</width>
+       <height>150</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>150</height>
+      </size>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>300</number>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>28</number>
+     </attribute>
+     <row>
+      <property name="text">
+       <string>Total sent</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Total received</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Connections</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Max connections</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Total connections</string>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Search">
+    <widget class="QTableWidget" name="results">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>260</width>
+       <height>190</height>
+      </rect>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>20</number>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>computer</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>file</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLineEdit" name="expression">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>260</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>Expression</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bSearch">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>130</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Search</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>:/icons/find.png</normaloff>:/icons/find.png</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bStop">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>40</y>
+       <width>130</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Stop</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>:/icons/cancel.png</normaloff>:/icons/cancel.png</iconset>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../../Images/Branon.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Start</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>begin(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Port</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>PortChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Username</sender>
+   <signal>editingFinished()</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>Accounts()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Password</sender>
+   <signal>editingFinished()</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>Accounts()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Hidden</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>Options(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>121</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Anonymous</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>Options(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ReadOnly</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>Options(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>181</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bRemove</sender>
+   <signal>clicked()</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>removeFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bAdd</sender>
+   <signal>clicked()</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>addFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sharedFolders</sender>
+   <signal>itemChanged(QTableWidgetItem*)</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>editFolder(QTableWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sharedFolders</sender>
+   <signal>itemClicked(QTableWidgetItem*)</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>editPath(QTableWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Back</sender>
+   <signal>clicked()</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>Backward()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bSearch</sender>
+   <signal>clicked()</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>SearchFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>74</x>
+     <y>54</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bStop</sender>
+   <signal>clicked()</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>StopSearch()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>204</x>
+     <y>54</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>results</sender>
+   <signal>cellDoubleClicked(int,int)</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>openResult(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>174</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Startup</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>nFtpControl</receiver>
+   <slot>Options(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>195</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>nTorrentWidget</class>
+ <widget class="QTabWidget" name="nTorrentWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>200</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Torrent manager</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../Images/CIOS.qrc">
+    <normaloff>:/images/torrent.png</normaloff>:/images/torrent.png</iconset>
+  </property>
+  <property name="toolTip">
+   <string>Torrent manager</string>
+  </property>
+  <property name="statusTip">
+   <string>Torrent manager</string>
+  </property>
+  <property name="whatsThis">
+   <string>Torrent manager</string>
+  </property>
+  <property name="tabPosition">
+   <enum>QTabWidget::South</enum>
+  </property>
+  <property name="currentIndex">
+   <number>0</number>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>16</width>
+    <height>16</height>
+   </size>
+  </property>
+  <widget class="QTreeWidget" name="Download">
+   <property name="alternatingRowColors">
+    <bool>true</bool>
+   </property>
+   <property name="columnCount">
+    <number>5</number>
+   </property>
+   <attribute name="title">
+    <string>Download</string>
+   </attribute>
+   <column>
+    <property name="text">
+     <string notr="true">1</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string notr="true">2</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string notr="true">3</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string notr="true">4</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string notr="true">5</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QWidget" name="Panel">
+   <attribute name="title">
+    <string>Control panel</string>
+   </attribute>
+   <widget class="QToolButton" name="Start">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Start</string>
+    </property>
+    <property name="statusTip">
+     <string>Start</string>
+    </property>
+    <property name="whatsThis">
+     <string>Start</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../../Images/CIOS.qrc">
+      <normaloff>:/images/PlayerPlay.png</normaloff>:/images/PlayerPlay.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="TorrentLookup">
+    <property name="geometry">
+     <rect>
+      <x>52</x>
+      <y>20</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Torrents lookup</string>
+    </property>
+    <property name="statusTip">
+     <string>Torrents lookup</string>
+    </property>
+    <property name="whatsThis">
+     <string>Torrents lookup</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../../Images/CIOS.qrc">
+      <normaloff>:/images/ScheduleZoomIn.png</normaloff>:/images/ScheduleZoomIn.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="UploadLimit">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>120</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+    <property name="maximum">
+     <number>10240000</number>
+    </property>
+    <property name="value">
+     <number>10240</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="DownloadLimit">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>60</y>
+      <width>120</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+    <property name="maximum">
+     <number>1048576</number>
+    </property>
+    <property name="value">
+     <number>1048576</number>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../../Images/CIOS.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>DownloadLimit</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>nTorrentWidget</receiver>
+   <slot>limitChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>211</x>
+     <y>73</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>UploadLimit</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>nTorrentWidget</receiver>
+   <slot>limitChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>73</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Start</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>nTorrentWidget</receiver>
+   <slot>DHT(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>37</x>
+     <y>37</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TorrentLookup</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>nTorrentWidget</receiver>
+   <slot>Lookup(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>69</x>
+     <y>37</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Download</sender>
+   <signal>itemChanged(QTreeWidgetItem*,int)</signal>
+   <receiver>nTorrentWidget</receiver>
+   <slot>torrentChanged(QTreeWidgetItem*,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>318</x>
+     <y>88</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
